@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+<body>
+<div>
+    <h2 >Home Expendiature</h2>
+    <tr>
+        <div align = "left" >           
+             <h3><a  th:href="@{'/new'}">Add new</a></h3>     
+        </div>
+    
+    </tr>
+    <tr>
+    
+    <div class="col-sm-5" align = "center">
+                 <div class="panel-body" align = "center" >
+                 <table class="table">
+  <thead class="thead-dark">
+    <tr>
+              <th>id</th>
+            <th>category</th>
+            <th>itemName</th>
+            <th>quantity</th>
+            <th>price</th>
+            <th>date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+       </tr>
+  </thead>
+  <tbody>
+      <tr  th:each="li : ${list}">
+        <td th:text="${li.id}">id</td>
+        <td th:text="${li.category}">category</td>
+        <td th:text="${li.itemName}">itemName</td>
+        <td th:text="${li.quantity}">quantity</td> 
+        <td th:text="${li.price}">price</td> 
+        <td th:text="${li.date}">date</td>                
+        <td>
+            <a th:href="@{'/edit/' + ${li.id}}">Edit</a>
+        </td>                                
+        <td>
+            <a th:href="@{'/delete/' + ${li.id}}">Delete</a>
+        </td>            
+        </tr> 
+         
+   
+  </tbody>
+</table>
+                    
+                 </div>
+
+            </div> 
+
+    </tr>
+
+    </tbody>
+    </table>
+    <div>
+</body>
+</html>
