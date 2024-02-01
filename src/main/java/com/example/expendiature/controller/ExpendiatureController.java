@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +34,7 @@ public class ExpendiatureController {
 	}
 
 	@GetMapping("/findById/{id}")
-	public ResponseEntity<Expendiature> getById(@PathVariable int id) {
+	public ResponseEntity<Expendiature> getById(@Validated @PathVariable int id) {
 		Expendiature exp = service.findById(id);
 		if (exp != null) {
 			return ResponseEntity.status(HttpStatus.OK).body(exp);
